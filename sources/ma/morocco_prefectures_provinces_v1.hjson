@@ -45,6 +45,16 @@
             name: label_ar
             desc: Province name (Arabic)
         }
+        {
+            type: property
+            name: label_ary
+            desc: Province name (Moroccan Arabic)
+        }
+        {
+            type: property
+            name: label_zgh
+            desc: Province name (Moroccan Tamazight)
+        }
     ],
     query: {
         sparql:
@@ -57,6 +67,8 @@
             ?label_ar
             ?label_fr
             ?label_en
+            ?label_ary
+            ?label_zgh
             WHERE {
               SERVICE <https://query.wikidata.org/sparql> {
               {SELECT
@@ -67,6 +79,8 @@
               (SAMPLE(?label_ar) as ?label_ar)
               (SAMPLE(?label_fr) as ?label_fr)
               (SAMPLE(?label_en) as ?label_en)
+              (SAMPLE(?label_ary) as ?label_ary)
+              (SAMPLE(?label_zgh) as ?label_zgh)
               WHERE {
                 VALUES ?entity { wd:Q1028 }
                 ?entity wdt:P150 ?region .
@@ -77,6 +91,8 @@
                 OPTIONAL { ?id2 rdfs:label ?label_ar . FILTER(LANG(?label_ar) = "ar") }
                 OPTIONAL { ?id2 rdfs:label ?label_fr . FILTER(LANG(?label_fr) = "fr") }
                 OPTIONAL { ?id2 rdfs:label ?label_en . FILTER(LANG(?label_en) = "en") }
+                OPTIONAL { ?id2 rdfs:label ?label_ary . FILTER(LANG(?label_ary) = "ary") }
+                OPTIONAL { ?id2 rdfs:label ?label_zgh . FILTER(LANG(?label_zgh) = "zgh") }
               }
               GROUP BY ?id1}
             }
