@@ -93,6 +93,8 @@
                 OPTIONAL { ?id2 rdfs:label ?label_en . FILTER(LANG(?label_en) = "en") }
                 OPTIONAL { ?id2 rdfs:label ?label_ary . FILTER(LANG(?label_ary) = "ary") }
                 OPTIONAL { ?id2 rdfs:label ?label_zgh . FILTER(LANG(?label_zgh) = "zgh") }
+                # Remove deprecated/dissolved entities
+                MINUS {?id2 (wdt:P576|wdt:P582|wdt:P1366) ?end.}
               }
               GROUP BY ?id1}
             }
